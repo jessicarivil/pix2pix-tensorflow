@@ -27,7 +27,7 @@ parser.add_argument("--pad", action="store_true", help="pad instead of crop for 
 parser.add_argument("--size", type=int, default=256, help="size to use for resize operation")
 # combine
 parser.add_argument("--b_dir", type=str, help="path to folder containing B images for combine operation")
-a = parser.parse_args()
+#a = parser.parse_args()
 
 
 def resize(src):
@@ -303,4 +303,12 @@ def main():
                 coord.request_stop()
                 coord.join(threads)
 
-main()
+def run(args):
+    global a
+    a = parser.parse_args(args)
+    print(vars(a))
+    main()
+
+if(__name__ == '__main__'):
+    a = parser.parse_args()
+    main()

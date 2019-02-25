@@ -46,7 +46,7 @@ parser.add_argument("--gan_weight", type=float, default=1.0, help="weight on GAN
 
 # export options
 parser.add_argument("--output_filetype", default="png", choices=["png", "jpeg"])
-a = parser.parse_args()
+#a = parser.parse_args()
 
 EPS = 1e-12
 CROP_SIZE = 256
@@ -800,4 +800,13 @@ def main():
                     break
 
 
-main()
+def run(args):
+    global a
+    a = parser.parse_args(args)
+    print(vars(a))
+    main()
+
+if __name__=='__main__':
+    a = parser.parse_args()
+    main()
+    
