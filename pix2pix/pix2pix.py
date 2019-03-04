@@ -617,7 +617,7 @@ def main():
             checkpoint = tf.train.latest_checkpoint(a.checkpoint)
             restore_saver.restore(sess, checkpoint)
             print("exporting model")
-            export_saver.export_meta_graph(filename=os.path.join(a.output_dir, "export.meta"))
+            export_saver.export_meta_graph(filename=os.path.join(a.output_dir, "export.meta"), clear_devices=True)
             export_saver.save(sess, os.path.join(a.output_dir, "export"), write_meta_graph=False)
 
         return
@@ -688,7 +688,7 @@ def main():
 
     with tf.name_scope("predict_real_summary"):
         tf.summary.image("predict_real", tf.image.convert_image_dtype(model.predict_real, dtype=tf.uint8))
-
+        
     with tf.name_scope("predict_fake_summary"):
         tf.summary.image("predict_fake", tf.image.convert_image_dtype(model.predict_fake, dtype=tf.uint8))
 

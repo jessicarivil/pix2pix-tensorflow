@@ -30,7 +30,7 @@ parser.add_argument("--b_dir", type=str, help="path to folder containing B image
 #a = parser.parse_args()
 
 
-def resize(src):
+def resize(src):çç
     height, width, _ = src.shape
     dst = src
     if height != width:
